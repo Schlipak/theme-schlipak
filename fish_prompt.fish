@@ -3,16 +3,34 @@
 # ===========================
 
 # Override these variables in your config.fish if you want
-set -g theme_display_user               yes
-set -g theme_segment_separator          ' | '
-set -g theme_user_separator             '::'
-set -g theme_prompt_arrow               \u27A4
+if not set -q theme_display_user
+    set -g theme_display_user               yes
+end
+if not set -q theme_segment_separator
+    set -g theme_segment_separator          ' | '
+end
+if not set -q theme_user_separator
+    set -g theme_user_separator             '::'
+end
+if not set -q theme_prompt_arrow
+    set -g theme_prompt_arrow               \u27A4
+end
 
-set -g theme_segment_separator_color    red
-set -g theme_user_separator_color       white
-set -g theme_host_color                 blue
-set -g theme_user_color                 blue
-set -g theme_pwd_color                  cyan
+if not set -q theme_segment_separator_color
+    set -g theme_segment_separator_color    red
+end
+if not set -q theme_user_separator_color
+    set -g theme_user_separator_color       white
+end
+if not set -q theme_host_color
+    set -g theme_host_color                 blue
+end
+if not set -q theme_user_color
+    set -g theme_user_color                 blue
+end
+if not set -q theme_pwd_color
+    set -g theme_pwd_color                  cyan
+end
 
 # ===========================
 # Helper methods
