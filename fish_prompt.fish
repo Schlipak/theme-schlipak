@@ -202,7 +202,6 @@ function prompt_status -d "Displays symbols for exit status, root and bg jobs"
         echo -n "⚙ "
         set_color normal
     end
-    echo -n " "
 end
 
 # ===========================
