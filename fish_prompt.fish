@@ -51,7 +51,11 @@ end
 
 function prompt_finish -d "Ends prompt"
     set_color -b normal
-    set_color -o green
+    if [ $uid -eq 0 ]
+        set_color -o red
+    else
+        set_color -o green
+    end
     echo
     echo -n " \$$prompt_arrow "
     set_color normal
