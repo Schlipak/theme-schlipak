@@ -1,6 +1,6 @@
 # Schlipak theme for fish
 
-This theme is based on agnoster theme, but isn't Powerline-themed.
+This theme is based on [agnoster theme](https://github.com/oh-my-fish/theme-agnoster), but isn't Powerline-themed.
 It features a two line prompt, showing info such as:
 
 - If the previous return status was different than 0
