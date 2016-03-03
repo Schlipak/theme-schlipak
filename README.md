@@ -15,12 +15,13 @@ It features a two line prompt, showing info such as:
 
 ### Installation
 
-This theme isn't part of the *Oh-my-fish* theme suite. However, it can easily be integrated locally to it.
+This theme can easily be installed using [Oh-my-fish](https://github.com/oh-my-fish/oh-my-fish).
 
 ```
-cd ~/.local/share/omf/themes
-git clone https://github.com/Schlipak/theme-schlipak-fish schlipak
+omf install https://github.com/Schlipak/theme-schlipak
 omf theme schlipak
 ```
 
-Henceforth, *Oh-my-fish* will keep track of the theme and will update it normally when running `omf update`.
+If you don't use *Oh-my-fish*:
+- Replace your `~/.config/fish/functions/fish_prompt.fish` file.
+- Or clone this repository somewhere, and replace that same file with a symbolic link to this repository's `fish_prompt.fish`. This will allow you to update the theme only by running `git pull` in the directory you cloned the theme to.
