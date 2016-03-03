@@ -30,7 +30,7 @@ function parse_git_dirty
     end
 end
 
-function prompt_pwd -d 'Prints WD, not shortened'
+function print_pwd -d 'Prints WD, not shortened'
     if test "$PWD" != "$HOME"
         printf "%s" (echo $PWD|sed -e 's|/private||' -e "s|^$HOME|~|")
     else
@@ -99,7 +99,7 @@ function prompt_dir -d "Display the current directory"
     print_separator
     set_color -b normal
     set_color cyan
-    echo -n (prompt_pwd)
+    echo -n (print_pwd)
     set_color normal
 end
 
@@ -217,8 +217,8 @@ function fish_prompt
     prompt_status
     prompt_user
     prompt_dir
-    #type -q hg;  and prompt_hg
+    type -q hg;  and prompt_hg
     type -q git; and prompt_git
-    #type -q svn; and prompt_svn
+    type -q svn; and prompt_svn
     prompt_finish
 end
