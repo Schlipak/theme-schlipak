@@ -12,3 +12,15 @@ It features a two line prompt, showing info such as:
 - On a new line, the prompt arrow. Turns to a red #> if the user is root.
 
 ![Screenshot](http://i.imgur.com/IbKzoAy.png)
+
+### Installation
+
+This theme isn't part of the *Oh-my-fish* theme suite. However, it can easily be integrated locally to it.
+
+```
+cd ~/.local/share/omf/themes
+git clone https://github.com/Schlipak/theme-schlipak-fish schlipak
+omf theme schlipak
+```
+
+Henceforth, *Oh-my-fish* will keep track of the theme and will update it normally when running `omf update`.
