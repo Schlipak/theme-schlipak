@@ -31,6 +31,7 @@ If you don't use *Oh-my-fish*:
 This theme will work as is out of the box. However, it provides you with a set of variables that you can override in your `config.fish` to change its look.
 
 - **theme_display_user** (*yes/no*) Hides or displays the username
+- **theme_display_user_reverse** (*yes/no*) Reverses the order of the user/hostname display (Default yes, host/user)
 - **theme_segment_separator** (*string*) Sets the separator between segments. Includes spacing
 - **theme_user_separator** (*string*) Sets the separator between the host and username
 - **theme_prompt_arrow** (*string*) Sets the character following the $ at the end of the prompt
