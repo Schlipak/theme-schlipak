@@ -50,11 +50,11 @@ function print_separator -d "Print segment separator"
 end
 
 function prompt_finish -d "Ends prompt"
+    set -l uid (id -u $USER)
     set_color -b normal
+    set_color -o green
     if [ $uid -eq 0 ]
         set_color -o red
-    else
-        set_color -o green
     end
     echo
     echo -n " \$$prompt_arrow "
@@ -217,8 +217,8 @@ function fish_prompt
     prompt_status
     prompt_user
     prompt_dir
-    type -q hg;  and prompt_hg
+    #type -q hg;  and prompt_hg
     type -q git; and prompt_git
-    type -q svn; and prompt_svn
+    #type -q svn; and prompt_svn
     prompt_finish
 end
