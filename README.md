@@ -1,4 +1,4 @@
-# Schlipak's theme for fish
+# Schlipak theme for fish
 
 This theme is based on agnoster theme, but isn't Powerline-themed.
 It features a two line prompt, showing info such as:
