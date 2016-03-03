@@ -2,10 +2,17 @@
 # Schlipak theme
 # ===========================
 
-set -g theme_display_user   yes
-set segment_separator       ' | '
-set user_separator          '::'
-set prompt_arrow            \u27A4
+# Override these variables in your config.fish if you want
+set -g theme_display_user               yes
+set -g theme_segment_separator          ' | '
+set -g theme_user_separator             '::'
+set -g theme_prompt_arrow               \u27A4
+
+set -g theme_segment_separator_color    red
+set -g theme_user_separator_color       white
+set -g theme_host_color                 blue
+set -g theme_user_color                 blue
+set -g theme_pwd_color                  cyan
 
 # ===========================
 # Helper methods
@@ -44,8 +51,8 @@ end
 
 function print_separator -d "Print segment separator"
     set_color -b normal
-    set_color red
-    echo -n $segment_separator
+    set_color $theme_segment_separator_color
+    echo -n $theme_segment_separator
     set_color normal
 end
 
@@ -57,7 +64,7 @@ function prompt_finish -d "Ends prompt"
         set_color -o red
     end
     echo
-    echo -n " \$$prompt_arrow "
+    echo -n " \$$theme_prompt_arrow "
     set_color normal
 end
 
@@ -72,19 +79,19 @@ function prompt_user -d "Display user and host"
         get_hostname
 
         set_color -b normal
-        set_color -o blue
+        set_color -o $theme_host_color
         echo -n $HOSTNAME_PROMPT
-        set_color -o white
-        echo -n $user_separator
+        set_color -o $theme_user_separator_color
+        echo -n $theme_user_separator
         set_color normal
-        set_color blue
+        set_color $theme_user_color
         echo -n $user_display
         set_color normal        
     else
         get_hostname
         if [ $HOSTNAME_PROMPT ]
             set_color -b normal
-            set_color -o blue
+            set_color -o $theme_host_color
             echo -n $HOSTNAME_PROMPT
             set_color normal
         end
@@ -98,7 +105,7 @@ end
 function prompt_dir -d "Display the current directory"
     print_separator
     set_color -b normal
-    set_color cyan
+    set_color $theme_pwd_color
     echo -n (print_pwd)
     set_color normal
 end
