@@ -9,6 +9,9 @@ end
 if not set -q theme_display_user_reverse
     set -g theme_display_user_reverse       yes
 end
+if not set -q theme_use_short_pwd
+    set -g theme_use_short_pwd              no
+end
 if not set -q theme_segment_separator
     set -g theme_segment_separator          ' | '
 end
@@ -138,7 +141,11 @@ function prompt_dir -d "Display the current directory"
     print_separator
     set_color -b normal
     set_color $theme_pwd_color
-    echo -n (print_pwd)
+    if [ "$theme_use_short_pwd" = "yes" ]
+        echo -n (prompt_pwd)
+    else
+        echo -n (print_pwd)
+    end
     set_color normal
 end
 
