@@ -6,6 +6,9 @@
 if not set -q theme_display_user
     set -g theme_display_user               yes
 end
+if not set -q theme_display_user_reverse
+    set -g theme_display_user_reverse       yes
+end
 if not set -q theme_segment_separator
     set -g theme_segment_separator          ' | '
 end
@@ -96,14 +99,25 @@ function prompt_user -d "Display user and host"
         set user_display (echo $USER | sed 's/\<[[:alpha:]]/\u&/g')
         get_hostname
 
-        set_color -b normal
-        set_color -o $theme_host_color
-        echo -n $HOSTNAME_PROMPT
-        set_color -o $theme_user_separator_color
-        echo -n $theme_user_separator
-        set_color normal
-        set_color $theme_user_color
-        echo -n $user_display
+        if [ "$theme_display_user_reverse" != "yes" ]
+            set_color -b normal
+            set_color $theme_user_color
+            echo -n $user_display
+            set_color -o $theme_user_separator_color
+            echo -n $theme_user_separator
+            set_color normal
+            set_color -o $theme_host_color
+            echo -n $HOSTNAME_PROMPT
+        else
+            set_color -b normal
+            set_color -o $theme_host_color
+            echo -n $HOSTNAME_PROMPT
+            set_color -o $theme_user_separator_color
+            echo -n $theme_user_separator
+            set_color normal
+            set_color $theme_user_color
+            echo -n $user_display
+        end
         set_color normal        
     else
         get_hostname
