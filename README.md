@@ -52,7 +52,7 @@ Colors can be any of:
 - cyan
 - white
 
-Those will correspond to your terminal's color. You can also use any hex encoded color, without any # or 0x prefix.
+Those will correspond to your terminal colors. You can also use any hex encoded color, without any # or 0x prefix.
 To override a variable, use the following syntax in your `config.fish` file:
 ``` fish
 set VAR VALUE
