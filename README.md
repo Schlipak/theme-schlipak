@@ -6,7 +6,7 @@ It features a two line prompt, showing info such as:
 - If the previous return status was different than 0
 - If the current user is root
 - If there are background jobs
-- The current username and host (host::user)
+- The current username and host (host::user by default)
 - The current working directory, without the usual fish abbreviation
 - Status info if the current directory is a Git/SVN/Mercurial repository
 - On a new line, the prompt arrow. Turns to a red #> if the user is root.
