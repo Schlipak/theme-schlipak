@@ -12,6 +12,12 @@ end
 if not set -q theme_use_short_pwd
     set -g theme_use_short_pwd              no
 end
+if not set -q theme_user_capitalize
+    set -g theme_user_capitalize            yes
+end
+if not set -q theme_host_capitalize
+    set -g theme_host_capitalize            yes
+end
 if not set -q theme_segment_separator
     set -g theme_segment_separator          ' | '
 end
@@ -99,9 +105,14 @@ end
 function prompt_user -d "Display user and host"
     if [ "$theme_display_user" = "yes" ]
         set USER (whoami)
-        set user_display (echo $USER | sed 's/\<[[:alpha:]]/\u&/g')
+        set user_display $USER
+        if [ "$theme_user_capitalize" = "yes" ]
+            set user_display (echo $USER | sed 's/\<[[:alpha:]]/\u&/g')
+        end
         get_hostname
-
+        if [ "$theme_host_capitalize" = "yes" ]
+            set HOSTNAME_PROMPT (echo $HOSTNAME_PROMPT | sed 's/\<[[:alpha:]]/\u&/g')
+        end
         if [ "$theme_display_user_reverse" != "yes" ]
             set_color -b normal
             set_color $theme_user_color
