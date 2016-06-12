@@ -111,7 +111,7 @@ function prompt_user -d "Display user and host"
         end
         get_hostname
         if [ "$theme_host_capitalize" = "yes" ]
-            set HOSTNAME_PROMPT (echo $HOSTNAME_PROMPT | sed 's/\<[[:alpha:]]/\u&/g')
+            set -g HOSTNAME_PROMPT (echo $HOSTNAME_PROMPT | sed 's/\<[[:alpha:]]/\u&/g')
         end
         if [ "$theme_display_user_reverse" != "yes" ]
             set_color -b normal
@@ -135,6 +135,9 @@ function prompt_user -d "Display user and host"
         set_color normal        
     else
         get_hostname
+        if [ "$theme_host_capitalize" = "yes" ]
+            set -g HOSTNAME_PROMPT (echo $HOSTNAME_PROMPT | sed 's/\<[[:alpha:]]/\u&/g')
+        end
         if [ $HOSTNAME_PROMPT ]
             set_color -b normal
             set_color -o $theme_host_color
