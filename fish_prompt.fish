@@ -209,7 +209,6 @@ function prompt_git -d "Display the current git state"
     end
 end
 
-
 function prompt_svn -d "Display the current svn state"
   set -l ref
   if command svn ls . >/dev/null 2>&1
