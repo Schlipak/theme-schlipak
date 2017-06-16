@@ -33,6 +33,7 @@ This theme will work as is out of the box. However, it provides you with a set o
 - **theme_display_user** (*yes/no*) Hides or displays the username (Default yes)
 - **theme_display_user_reverse** (*yes/no*) Reverses the order of the user/hostname display (Default yes, host/user)
 - **theme_use_short_pwd** (*yes/no*) Shortens the displayed current directory (Default no)
+- **theme_use_short_git_branch** (*yes/no*) Shortens the displayed git branch. This is intended for a custom branch format (initials/TASK-NUMBER/description) and will not work properly for others (Default no)
 - **theme_user_capitalize** (*yes/no*) Capitalizes the username (Default yes)
 - **theme_host_capitalize** (*yes/no*) Capitalizes the hostname (Default yes)
 - **theme_segment_separator** (*string*) Sets the separator between segments. Includes spacing

@@ -12,6 +12,9 @@ end
 if not set -q theme_use_short_pwd
     set -g theme_use_short_pwd              no
 end
+if not set -q theme_use_short_git_branch
+    set -g theme_use_short_git_branch       no
+end
 if not set -q theme_user_capitalize
     set -g theme_user_capitalize            yes
 end
@@ -200,6 +203,12 @@ function prompt_git -d "Display the current git state"
         end
         set branch_symbol \uE0A0
         set -l branch (echo $ref | sed  "s-refs/heads/-$branch_symbol -")
+		if [ "$theme_use_short_git_branch" = "yes" ]
+			set -l task_number (string replace -ar "($branch_symbol\s\w+\/[\w\d-]+\/).*" '$1' $branch)
+			set -l branch_name (string replace -ar "$branch_symbol\s\w+\/[\w\d-]+\/(.*)" '$1' $branch)
+			set -l short_branch_name (string replace -ar '([^-]{1})[^-]*' '$1' $branch_name)
+			set branch "$task_number$short_branch_name"
+		end
         print_separator
         set_color -b normal
         if [ "$dirty" != "" ]
