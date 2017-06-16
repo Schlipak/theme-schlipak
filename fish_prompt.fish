@@ -195,19 +195,21 @@ function prompt_git -d "Display the current git state"
     set -l ref
     set -l dirty
     if command git rev-parse --is-inside-work-tree >/dev/null 2>&1
+		set branch_symbol \uE0A0
         set dirty (parse_git_dirty)
         set ref (command git symbolic-ref HEAD 2> /dev/null)
         if [ $status -gt 0 ]
-            set -l branch (command git show-ref --head -s --abbrev |head -n1 2> /dev/null)
-            set ref "➦ $branch "
-        end
-        set branch_symbol \uE0A0
-        set -l branch (echo $ref | sed  "s-refs/heads/-$branch_symbol -")
-		if [ "$theme_use_short_git_branch" = "yes" ]
-			set -l task_number (string replace -ar "($branch_symbol\s\w+\/[\w\d-]+\/).*" '$1' $branch)
-			set -l branch_name (string replace -ar "$branch_symbol\s\w+\/[\w\d-]+\/(.*)" '$1' $branch)
-			set -l short_branch_name (string replace -ar '([^-]{1})[^-]*' '$1' $branch_name)
-			set branch "$task_number$short_branch_name"
+			set branch_symbol "➦"
+            set branch (command git show-ref --head -s --abbrev |head -n1 2> /dev/null)
+            set branch "$branch_symbol $branch"
+        else
+			set branch (echo $ref | sed  "s-refs/heads/-$branch_symbol -")
+			if [ "$theme_use_short_git_branch" = "yes" ]
+				set -l task_number (string replace -ar "($branch_symbol\s\w+\/[\w\d-]+\/).*" '$1' $branch)
+				set -l branch_name (string replace -ar "$branch_symbol\s\w+\/[\w\d-]+\/(.*)" '$1' $branch)
+				set -l short_branch_name (string replace -ar '([^-]{1})[^-]*' '$1' $branch_name)
+				set branch "$task_number$short_branch_name"
+			end
 		end
         print_separator
         set_color -b normal
